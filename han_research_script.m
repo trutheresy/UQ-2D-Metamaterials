@@ -16,7 +16,7 @@ poisson_soft = 0*ones(1,n_samples);
 poisson_hard = 0.5*ones(1,n_samples);
 
 %%% ALTERED PARAMETERS %%%
-input_data = pd5_inputs;
+input_data = mc_100_inputs;
 input_data_size = size(input_data);
 n_samples = input_data_size(2);
 E_soft = input_data(1,:);
@@ -45,15 +45,15 @@ end
 
 % Change these names before each run!
 if save_outputs
-    save(['bg_size_q_pd5_uniform_' num2str(length(bg_size))], 'bg_size');
-    save(['bg_bottom_q_pd5_uniform_' num2str(length(bg_bottom))], 'bg_bottom');
-    save(['bg_top_q_pd5_uniform_' num2str(length(bg_top))], 'bg_top');
-    save(['E_soft_q_pd5_uniform_' num2str(length(E_soft))], 'E_soft');
-    save(['E_hard_q_pd5_uniform_' num2str(length(E_hard))], 'E_hard');
-    save(['rho_soft_q_pd5_uniform_' num2str(length(rho_soft))], 'rho_soft');
-    save(['rho_hard_q_pd5_uniform_' num2str(length(rho_hard))], 'rho_hard');
-    save(['pr_soft_q_pd5_uniform_' num2str(length(poisson_soft))], 'poisson_soft');
-    save(['pr_hard_q_pd5_uniform_' num2str(length(poisson_hard))], 'poisson_hard');    
+    save(['bg_size_mc_uniform_' num2str(length(bg_size))], 'bg_size');
+    save(['bg_bottom_mc_uniform_' num2str(length(bg_bottom))], 'bg_bottom');
+    save(['bg_top_mc_uniform_' num2str(length(bg_top))], 'bg_top');
+    save(['E_soft_mc_uniform_' num2str(length(E_soft))], 'E_soft');
+    save(['E_hard_mc_uniform_' num2str(length(E_hard))], 'E_hard');
+    save(['rho_soft_mc_uniform_' num2str(length(rho_soft))], 'rho_soft');
+    save(['rho_hard_mc_uniform_' num2str(length(rho_hard))], 'rho_hard');
+    save(['pr_soft_mc_uniform_' num2str(length(poisson_soft))], 'poisson_soft');
+    save(['pr_hard_mc_uniform_' num2str(length(poisson_hard))], 'poisson_hard');    
 end
 
 figure
