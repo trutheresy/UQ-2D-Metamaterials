@@ -1,30 +1,30 @@
 %clc
 %clear all
 
-save_outputs = false;
+save_outputs = true;
 % custom_E = false;
 % custom_Rho = false;
 % custom_PR = false;
 
-%%% DEFAULT PARAMETERS %%%
-n_samples = 1;
-E_soft = 200e6*ones(1,n_samples);
-E_hard = 200e9*ones(1,n_samples);
-rho_soft = 1e3*ones(1,n_samples);
-rho_hard = 8e3*ones(1,n_samples);
-poisson_soft = 0*ones(1,n_samples);
-poisson_hard = 0.5*ones(1,n_samples);
-
 %%% ALTERED PARAMETERS %%%
-% input_data = mc_100_inputs;
-% input_data_size = size(input_data);
-% n_samples = input_data_size(2);
-% E_soft = input_data(1,:);
+input_data = mc_10000_inputs;
+input_data_size = size(input_data);
+n_samples = input_data_size(2);
+E_soft = input_data(1,:);
 % E_hard = input_data(2,:);
 % rho_soft = input_data(3,:);
 % rho_hard = input_data(4,:);
 % poisson_soft = input_data(5,:);
 % poisson_hard = input_data(6,:);
+
+%%% DEFAULT PARAMETERS %%%
+% n_samples = 3;
+% E_soft = 200e6*ones(1,n_samples);
+E_hard = 200e9*ones(1,n_samples);
+rho_soft = 1e3*ones(1,n_samples);
+rho_hard = 8e3*ones(1,n_samples);
+poisson_soft = 0*ones(1,n_samples);
+poisson_hard = 0.5*ones(1,n_samples);
 
 bg_size = zeros(n_samples, 1);
 bg_top = zeros(n_samples, 1);
@@ -45,15 +45,17 @@ end
 
 % Change these names before each run!
 if save_outputs
-    save(['bg_size_mc_uniform_' num2str(length(bg_size))], 'bg_size');
-    save(['bg_bottom_mc_uniform_' num2str(length(bg_bottom))], 'bg_bottom');
-    save(['bg_top_mc_uniform_' num2str(length(bg_top))], 'bg_top');
-    save(['E_soft_mc_uniform_' num2str(length(E_soft))], 'E_soft');
-    save(['E_hard_mc_uniform_' num2str(length(E_hard))], 'E_hard');
-    save(['rho_soft_mc_uniform_' num2str(length(rho_soft))], 'rho_soft');
-    save(['rho_hard_mc_uniform_' num2str(length(rho_hard))], 'rho_hard');
-    save(['pr_soft_mc_uniform_' num2str(length(poisson_soft))], 'poisson_soft');
-    save(['pr_hard_mc_uniform_' num2str(length(poisson_hard))], 'poisson_hard');    
+    outputFolder = 'E:\Research\Projects\UQ 2D Metamaterials';
+    cd(outputFolder);
+    save(['bg_size_uniform_mc' num2str(length(bg_size))], 'bg_size');
+    save(['bg_bottom_uniform_mc' num2str(length(bg_bottom))], 'bg_bottom');
+    save(['bg_top_uniform_mc' num2str(length(bg_top))], 'bg_top');
+    save(['E_soft_uniform_mc' num2str(length(E_soft))], 'E_soft');
+    % save(['E_hard_mc_uniform_' num2str(length(E_hard))], 'E_hard');
+    % save(['rho_soft_mc_uniform_' num2str(length(rho_soft))], 'rho_soft');
+    % save(['rho_hard_mc_uniform_' num2str(length(rho_hard))], 'rho_hard');
+    % save(['pr_soft_mc_uniform_' num2str(length(poisson_soft))], 'poisson_soft');
+    % save(['pr_hard_mc_uniform_' num2str(length(poisson_hard))], 'poisson_hard');    
 end
 
 figure
