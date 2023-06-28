@@ -1,10 +1,16 @@
-function [EIGENVALUE_DATA, WAVEVECTOR_DATA] = dispersion_data_custom_all_param(E_soft, E_hard, rho_soft, rho_hard, poisson_soft, poisson_hard)
+function [EIGENVALUE_DATA, WAVEVECTOR_DATA] = dispersion_data_custom_all_param(E_soft, E_hard, rho_soft, rho_hard, poisson_soft, poisson_hard, geometries)
     hanProject = true;
     isSaveOutput = false;
     isSaveEigenvectors = false;
     %isIncludeHomogeneous = true;
     %isProfile = false;
-    N_struct = 1;
+    useErrorGeometries = true;
+    error_geometries = error_geometries;
+    if useErrorGeometries
+        N_struct = length(error_geometries);
+    else
+        N_struct = 1;
+    end
     imag_tol = 1e-3;
     %rng_seed_offset = 0;
     
@@ -69,21 +75,28 @@ function [EIGENVALUE_DATA, WAVEVECTOR_DATA] = dispersion_data_custom_all_param(E
     % for struct_idx = 1:N_struct
         pfc = const;
         if hanProject
-
-            design(:,:,1) = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
-                             0, 0, 0, 1, 1, 1, 1, 0, 0, 0;
-                             0, 0, 0, 1, 0, 0, 1, 0, 0, 0;
-                             0, 1, 1, 1, 1, 1, 1, 1, 1, 0;
-                             0, 1, 0, 1, 0, 0, 1, 0, 1, 0;
-                             0, 1, 0, 1, 0, 0, 1, 0, 1, 0;
-                             0, 1, 1, 1, 1, 1, 1, 1, 1, 0;
-                             0, 0, 0, 1, 0, 0, 1, 0, 0, 0;
-                             0, 0, 0, 1, 1, 1, 1, 0, 0, 0;
-                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            design(:,:,2) = design(:,:,1); % the second pane is rho
-            design(:,:,3) = .6*ones(const.N_pix); % the third pane is poisson's ratio
-            pfc.design = design;
-            pfc.design = convert_design(pfc.design,'linear',pfc.design_scale,pfc.E_min,pfc.E_max,pfc.rho_min,pfc.rho_max);
+            if useErrorGeometries
+                design(:,:,1) = squeeze(error_geometries(struct_idx,:,:));
+                design(:,:,2) = design(:,:,1); % the second pane is rho
+                design(:,:,3) = .6*ones(const.N_pix); % the third pane is poisson's ratio
+                pfc.design = design;
+                pfc.design = convert_design(pfc.design,'linear',pfc.design_scale,pfc.E_min,pfc.E_max,pfc.rho_min,pfc.rho_max);
+            else %fixed design
+                design(:,:,1) = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
+                                 0, 0, 0, 1, 1, 1, 1, 0, 0, 0;
+                                 0, 0, 0, 1, 0, 0, 1, 0, 0, 0;
+                                 0, 1, 1, 1, 1, 1, 1, 1, 1, 0;
+                                 0, 1, 0, 1, 0, 0, 1, 0, 1, 0;
+                                 0, 1, 0, 1, 0, 0, 1, 0, 1, 0;
+                                 0, 1, 1, 1, 1, 1, 1, 1, 1, 0;
+                                 0, 0, 0, 1, 0, 0, 1, 0, 0, 0;
+                                 0, 0, 0, 1, 1, 1, 1, 0, 0, 0;
+                                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                design(:,:,2) = design(:,:,1); % the second pane is rho
+                design(:,:,3) = .6*ones(const.N_pix); % the third pane is poisson's ratio
+                pfc.design = design;
+                pfc.design = convert_design(pfc.design,'linear',pfc.design_scale,pfc.E_min,pfc.E_max,pfc.rho_min,pfc.rho_max);
+            end
         end
         %imagesc(pfc.design(:,:,1))
         designs(struct_idx,:,:,:) = pfc.design;

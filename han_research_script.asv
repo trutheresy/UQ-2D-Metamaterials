@@ -5,23 +5,24 @@ save_outputs = true;
 % custom_E = false;
 % custom_Rho = false;
 % custom_PR = false;
+error_geometries = true;
 
 %%% ALTERED PARAMETERS %%%
-input_data = pd_5_inputs;
-input_data_size = size(input_data);
-n_samples = input_data_size(2);
+%input_data = pd_5_inputs;
+%input_data_size = size(input_data);
+%n_samples = input_data_size(2);
 %E_soft = input_data(1,:);
 %E_hard = input_data(1,:);
-rho_soft = input_data(1,:); %change back to correct rows later
+%rho_soft = input_data(1,:); %change back to correct rows later
 %rho_hard = input_data(1,:);
 %poisson_soft = input_data(1,:);
 %poisson_hard = input_data(1,:);
 
 %%% DEFAULT PARAMETERS %%%
-% n_samples = 3;
+n_samples = 1;
 E_soft = 200e6*ones(1,n_samples);
 E_hard = 200e9*ones(1,n_samples);
-%rho_soft = 1e3*ones(1,n_samples);
+rho_soft = 1e3*ones(1,n_samples);
 rho_hard = 8e3*ones(1,n_samples);
 poisson_soft = 0*ones(1,n_samples);
 poisson_hard = 0.5*ones(1,n_samples);
@@ -52,7 +53,7 @@ if save_outputs
     save(['bg_top_uniform_q_pd' num2str(length(bg_top)-1)], 'bg_top');
     %save(['E_soft_uniform_q_pd' num2str(length(E_soft))], 'E_soft');
     %save(['E_hard_uniform_q_pd' num2str(length(E_hard)-1)], 'E_hard');
-    save(['rho_soft_uniform_q_pd' num2str(length(rho_soft)-1)], 'rho_soft');
+    %save(['rho_soft_uniform_q_pd' num2str(length(rho_soft)-1)], 'rho_soft');
     %save(['rho_hard_uniform_q_pd' num2str(length(rho_hard)-1)], 'rho_hard');
     %save(['pr_soft_uniform_q_pd' num2str(length(poisson_soft)-1)], 'poisson_soft');
     %save(['pr_hard_uniform_q_pd' num2str(length(poisson_hard)-1)], 'poisson_hard');    
