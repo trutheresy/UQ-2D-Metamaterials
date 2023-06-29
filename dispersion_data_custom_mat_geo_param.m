@@ -1,10 +1,11 @@
-function [EIGENVALUE_DATA, WAVEVECTOR_DATA] = dispersion_data_custom_mat_geo_param(E_soft, E_hard, rho_soft, rho_hard, poisson_soft, poisson_hard, geometries)
+function [EIGENVALUE_DATA, WAVEVECTOR_DATA] = dispersion_data_custom_mat_geo_param(E_soft, E_hard, rho_soft, rho_hard, poisson_soft, poisson_hard, geometry)
     hanProject = true;
     isSaveOutput = false;
     isSaveEigenvectors = false;
     %isIncludeHomogeneous = true;
     %isProfile = false;
-    N_struct = length(geometries);
+    %N_struct = length(geometry);
+    N_struct = 1;
     imag_tol = 1e-3;
     %rng_seed_offset = 0;
     
@@ -69,7 +70,7 @@ function [EIGENVALUE_DATA, WAVEVECTOR_DATA] = dispersion_data_custom_mat_geo_par
     % for struct_idx = 1:N_struct
         pfc = const;
         if hanProject
-            design(:,:,1) = squeeze(geometries(struct_idx,:,:));
+            design(:,:,1) = geometry;
             design(:,:,2) = design(:,:,1); % the second pane is rho
             design(:,:,3) = .6*ones(const.N_pix); % the third pane is poisson's ratio
             pfc.design = design;
