@@ -56,9 +56,12 @@ for g = 1:n_geometries
         dt = datetime('now'); % get current date and time
         dt.Format = 'yyyy-MM-dd'; % set desired format
         dt_str = char(dt); % convert to string
-        mkdir(dt_str)
-        cd(dt_str)
+        dir_dt_str = strcat(dt_str,['_geometries_' num2str(n_geometries)]);
+        mkdir(dir_dt_str)
+        cd(dir_dt_str)
         outputFolder = [num2str(g) '_of_' num2str(n_geometries)];
+        mkdir(outputFolder)
+        cd(outputFolder)
         save(['bg_size_uniform_q_pd' num2str(length(bg_size)-1)], 'bg_size');
         save(['bg_bottom_uniform_q_pd' num2str(length(bg_bottom)-1)], 'bg_bottom');
         save(['bg_top_uniform_q_pd' num2str(length(bg_top)-1)], 'bg_top');
