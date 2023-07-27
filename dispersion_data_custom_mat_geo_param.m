@@ -13,8 +13,8 @@ function [EIGENVALUE_DATA, WAVEVECTOR_DATA] = dispersion_data_custom_mat_geo_par
     %%Default Constants
     const.a = 1; % [m]
     const.N_ele = 1;
-    const.N_pix = 10; % Assumes square matrix
-    %const.N_pix = geo_rows; % Assumes square matrix
+    %const.N_pix = 10; % Assumes square matrix
+    const.N_pix = geo_rows; % Assumes square matrix
     const.N_wv = [11 NaN]; const.N_wv(2) = ceil(const.N_wv(1)/2); % used for full IBZ calculations
     const.N_k = 50; % used for IBZ contour calculations
     const.N_eig = 4;
