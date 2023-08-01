@@ -8,6 +8,8 @@ function [EIGENVALUE_DATA, WAVEVECTOR_DATA] = dispersion_data_custom_mat_geo_par
     N_struct = 1;
     imag_tol = 1e-3;
     %rng_seed_offset = 0;
+    disp(['geometry:' num2str(size(geometry))])
+    geometry = squeeze(geometry);
     [geo_rows, geo_cols] = size(geometry);
 
     %%Default Constants
