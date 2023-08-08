@@ -44,10 +44,10 @@ for g = 1:n_geometries
         %[EIGENVALUE_DATA, WAVEVECTOR_DATA] = dispersion_data_custom_all_param(E_soft(i), E_hard(i), rho_soft(i), rho_hard(i), poisson_soft(i), poisson_hard(i));
         [EIGENVALUE_DATA, WAVEVECTOR_DATA] = dispersion_data_custom_mat_geo_param(E_soft(i), E_hard(i), rho_soft(i), rho_hard(i), poisson_soft(i), poisson_hard(i), geometry);
     
-        bg_bottom(i) = max(EIGENVALUE_DATA(:,3));
-        bg_top(i) = min(EIGENVALUE_DATA(:,4));
-        bg_size(i) = bg_top(i) - bg_bottom(i);
-        if bg_size(i) > 0
+        bg_bottom(g*i) = max(EIGENVALUE_DATA(:,3));
+        bg_top(g*i) = min(EIGENVALUE_DATA(:,4));
+        bg_size(g*i) = bg_top(g*i) - bg_bottom(g*i);
+        if bg_size(g*i) > 0
             disp(['Bandgap present for input ' num2str(i)])
         else
             disp(['No bandgap for input ' num2str(i)])
@@ -59,19 +59,19 @@ elapsedTime = toc;
 
 % Change these names before each run!
 if save_outputs
-    %outputFolder = 'E:/Research/Projects/UQ 2D Metamaterials';
-    outputFolder = 'C:\Users\zhang\Documents\Duke\Research\UQ-2D-Metamaterials';
+    outputFolder = 'E:/Research/Projects/UQ 2D Metamaterials';
+    %outputFolder = 'C:\Users\zhang\Documents\Duke\Research\UQ-2D-Metamaterials';
     cd(outputFolder);
-    save(['bg_size_uniform_60p_5%_n' num2str(length(bg_size))], 'bg_size');
-    save(['bg_bottom_uniform_60p_5%_n' num2str(length(bg_bottom))], 'bg_bottom');
-    save(['bg_top_uniform_60p_5%_n' num2str(length(bg_top))], 'bg_top');
-    save(['E_soft_uniform_60p_5%_n' num2str(length(E_soft))], 'E_soft');
-    save(['E_hard_uniform_60p_5%_n' num2str(length(E_hard))], 'E_hard');
-    save(['rho_soft_uniform_60p_5%_n' num2str(length(rho_soft))], 'rho_soft');
-    save(['rho_hard_uniform_60p_5%_n' num2str(length(rho_hard))], 'rho_hard');
-    save(['pr_soft_uniform_60p_5%_n' num2str(length(poisson_soft))], 'poisson_soft');
-    save(['pr_hard_uniform_60p_5%_n' num2str(length(poisson_hard))], 'poisson_hard');
-    save(['elapsed_time_60p_n' num2str(n_materials)], 'elapsedTime')
+    save(['bg_size_uniform_80p_5%_n' num2str(length(bg_size))], 'bg_size');
+    save(['bg_bottom_uniform_80p_5%_n' num2str(length(bg_bottom))], 'bg_bottom');
+    save(['bg_top_uniform_80p_5%_n' num2str(length(bg_top))], 'bg_top');
+    save(['E_soft_uniform_80p_5%_n' num2str(length(E_soft))], 'E_soft');
+    save(['E_hard_uniform_80p_5%_n' num2str(length(E_hard))], 'E_hard');
+    save(['rho_soft_uniform_80p_5%_n' num2str(length(rho_soft))], 'rho_soft');
+    save(['rho_hard_uniform_80p_5%_n' num2str(length(rho_hard))], 'rho_hard');
+    save(['pr_soft_uniform_80p_5%_n' num2str(length(poisson_soft))], 'poisson_soft');
+    save(['pr_hard_uniform_80p_5%_n' num2str(length(poisson_hard))], 'poisson_hard');
+    save(['elapsed_time_80p_n' num2str(n_materials*n_geometries)], 'elapsedTime')
 end
 
 figure
