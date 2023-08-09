@@ -27,7 +27,7 @@ poisson_hard = 0.5*ones(1,n_materials);
 % poisson_soft = input_data(5,:);
 % poisson_hard = input_data(6,:);
 geometries = error_geometries;
-geometries_size = size(geometries);
+geometries_size = size(geometries)
 n_geometries = geometries_size(1)
 
 bg_size = zeros(n_materials, 1);
@@ -62,16 +62,16 @@ if save_outputs
     outputFolder = 'E:/Research/Projects/UQ 2D Metamaterials';
     %outputFolder = 'C:\Users\zhang\Documents\Duke\Research\UQ-2D-Metamaterials';
     cd(outputFolder);
-    save(['bg_size_uniform_80p_5%_n' num2str(length(bg_size))], 'bg_size');
-    save(['bg_bottom_uniform_80p_5%_n' num2str(length(bg_bottom))], 'bg_bottom');
-    save(['bg_top_uniform_80p_5%_n' num2str(length(bg_top))], 'bg_top');
-    save(['E_soft_uniform_80p_5%_n' num2str(length(E_soft))], 'E_soft');
-    save(['E_hard_uniform_80p_5%_n' num2str(length(E_hard))], 'E_hard');
-    save(['rho_soft_uniform_80p_5%_n' num2str(length(rho_soft))], 'rho_soft');
-    save(['rho_hard_uniform_80p_5%_n' num2str(length(rho_hard))], 'rho_hard');
-    save(['pr_soft_uniform_80p_5%_n' num2str(length(poisson_soft))], 'poisson_soft');
-    save(['pr_hard_uniform_80p_5%_n' num2str(length(poisson_hard))], 'poisson_hard');
-    save(['elapsed_time_80p_n' num2str(n_materials*n_geometries)], 'elapsedTime')
+    save(['bg_size_uniform_' num2str(geometries_size(2)) 'p_5%_n' num2str(length(bg_size))], 'bg_size');
+    save(['bg_bottom_uniform_' num2str(geometries_size(2)) 'p_5%_n' num2str(length(bg_bottom))], 'bg_bottom');
+    save(['bg_top_uniform_' num2str(geometries_size(2)) 'p_5%_n' num2str(length(bg_top))], 'bg_top');
+    save(['E_soft_uniform_' num2str(geometries_size(2)) 'p_5%_n' num2str(length(E_soft))], 'E_soft');
+    save(['E_hard_uniform_' num2str(geometries_size(2)) 'p_5%_n' num2str(length(E_hard))], 'E_hard');
+    save(['rho_soft_uniform_' num2str(geometries_size(2)) 'p_5%_n' num2str(length(rho_soft))], 'rho_soft');
+    save(['rho_hard_uniform_' num2str(geometries_size(2)) 'p_5%_n' num2str(length(rho_hard))], 'rho_hard');
+    save(['pr_soft_uniform_' num2str(geometries_size(2)) 'p_5%_n' num2str(length(poisson_soft))], 'poisson_soft');
+    save(['pr_hard_uniform_' num2str(geometries_size(2)) 'p_5%_n' num2str(length(poisson_hard))], 'poisson_hard');
+    save(['elapsed_time_' num2str(geometries_size(2)) 'p_n' num2str(n_materials*n_geometries)], 'elapsedTime')
 end
 
 figure
