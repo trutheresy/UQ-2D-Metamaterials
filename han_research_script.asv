@@ -1,6 +1,7 @@
 %clc
 %clear all
-addpath('/Users/zhang/Documents/Duke/Research/2D-dispersion')
+%c
+
 save_outputs = true;
 % custom_E = false;
 % custom_Rho = false;
