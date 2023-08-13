@@ -1,8 +1,15 @@
 %clc
 %clear all
+% Get the full path to the currently executing script
+scriptPath = mfilename('fullpath');
+
+% Extract the path to the folder containing the script
+[outputFolder, ~, ~] = fileparts(scriptPath);
 %addpath('/Users/zhang/Documents/Duke/Research/2D-dispersion')
 addpath('2D dispersion legacy')
 save_outputs = true;
+%outputFolder = 'E:/Research/Projects/UQ 2D Metamaterials';
+%outputFolder = 'C:\Users\zhang\Documents\Duke\Research\UQ-2D-Metamaterials';
 % custom_E = false;
 % custom_Rho = false;
 % custom_PR = false;
@@ -28,9 +35,14 @@ poisson_hard = 0.5*ones(1,n_materials);
 % poisson_soft = input_data(5,:);
 % poisson_hard = input_data(6,:);
 geometries = error_geometries;
-geometries_size = size(geometries)
-n_geometries = geometries_size(1)
-
+if ndims(geometries) == 2
+    n_geometries = 1
+    geometries_size = size(geometries)
+elseif ndims(geometries) == 3
+    geometries_size = size(geometries)
+    n_geometries = geometries_size(1)
+    geometries_size = geometries_size(2:end);
+end
 bg_size = zeros(n_materials, 1);
 bg_top = zeros(n_materials, 1);
 bg_bottom = zeros(n_materials, 1);
@@ -38,7 +50,12 @@ bg_bottom = zeros(n_materials, 1);
 tic; % Start timer
 
 for g = 1:n_geometries
-    geometry = geometries(g,:,:);
+    if n_geometries == 1
+        geometry = geometries;
+    else
+        geometry = geometries(g,:,:);
+    end
+    disp(size(geometry))
     %disp(['geometry:' num2str(size(geometry))])
     for i = 1:n_materials
         disp(['g:' num2str(g) ', i:' num2str(i)])
@@ -60,8 +77,6 @@ elapsedTime = toc;
 
 % Change these names before each run!
 if save_outputs
-    outputFolder = 'E:/Research/Projects/UQ 2D Metamaterials';
-    %outputFolder = 'C:\Users\zhang\Documents\Duke\Research\UQ-2D-Metamaterials';
     cd(outputFolder);
     save(['bg_size_uniform_' num2str(geometries_size(2)) 'p_5%_n' num2str(length(bg_size))], 'bg_size');
     save(['bg_bottom_uniform_' num2str(geometries_size(2)) 'p_5%_n' num2str(length(bg_bottom))], 'bg_bottom');
