@@ -20,12 +20,12 @@ mat_geo_coupled = true;
 %%% DEFAULT PARAMETERS %%%
 n_geometries = 1;
 n_materials = 1;
-E_soft = 200e6*ones(1,n_materials);
-E_hard = 200e9*ones(1,n_materials);
-rho_soft = 1e3*ones(1,n_materials);
-rho_hard = 8e3*ones(1,n_materials);
-poisson_soft = 0*ones(1,n_materials);
-poisson_hard = 0.5*ones(1,n_materials);
+% E_soft = 200e6*ones(1,n_materials);
+% E_hard = 200e9*ones(1,n_materials);
+% rho_soft = 1e3*ones(1,n_materials);
+% rho_hard = 8e3*ones(1,n_materials);
+% poisson_soft = 0*ones(1,n_materials);
+% poisson_hard = 0.5*ones(1,n_materials);
 
 %%% ALTERED PARAMETERS %%%
 % importdata("scaled_default_geometry.mat")
@@ -44,26 +44,28 @@ poisson_hard = 0.5*ones(1,n_materials);
 %poisson_hard = input_data(1,:);
 
 %%% IMPORT DATA FILES %%%
-% Define the folder path
-folderPath = 'gaussian 6+1 inputs quadrature rule study'; % Replace with the actual folder path
+% Specify the folder name and search string
+folderName = 'gaussian 6+1 inputs quadrature rule study';
+searchString = '_pd_1';
 
-% Define the string to search for in the file names
-searchString = 'pd_1'; % Replace with the desired string
+% Get a list of all files in the specified folder
+files = dir(fullfile(folderName, ['*' searchString '*']));
 
-% Get a list of all files in the folder
-fileList = dir(fullfile(folderPath, '*.mat'));
+% Loop through each file
+for i = 1:length(files)
+    filePath = fullfile(folderName, files(i).name);
 
-% Iterate through the file list to find the file with the desired string
-matchingFileName = '';
-for i = 1:length(fileList)
-    if contains(fileList(i).name, searchString)
-        filePath = fullfile(folderPath, matchingFileName)
-        loadedData = load(filePath); % This will load the variables stored in the .mat file
-    end
+    % Load the contents of the MAT file
+    load(filePath); % Variables will be loaded into the workspace
+    
+    % Display loaded variable names if needed
+    disp(['Loaded variables from ' files(i).name ':']);
+    
+    % Optionally, you can further process the loaded variables here
 end
 %%% END IMPORT DATA FILES %%%
 
-geometries = pd_1_geos;
+geometries = pd_1_geos; %change name each run
 if ndims(geometries) == 2
     n_geometries = 1
     geometries_size = size(geometries)
@@ -72,6 +74,11 @@ elseif ndims(geometries) == 3
     n_geometries = geometries_size(1)
     geometries_size = geometries_size(2:end);
 end
+
+materials = pd_1_inputs'; %change name each run
+materials_size = size(materials)
+n_materials = materials_size(1)
+
 bg_size = zeros(n_materials, 1);
 bg_top = zeros(n_materials, 1);
 bg_bottom = zeros(n_materials, 1);
