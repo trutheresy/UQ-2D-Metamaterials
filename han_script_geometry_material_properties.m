@@ -44,9 +44,10 @@ n_materials = 1;
 
 %%% IMPORT DATA FILES %%%
 % Specify the folder name and search string
-%folderName = 'gaussian 6+1 inputs quadrature rule study';
-folderName = 'gaussian 6+1 inputs mc study';
-searchString = '_mc_10000.mat';
+folderName = 'gaussian 6+1 inputs quadrature rule study';
+%folderName = 'gaussian 6+1 inputs mc study';
+searchString = '_pd_3';
+%searchString = '_mc_10000.mat';
 
 % Get a list of all files in the specified folder
 files = dir(fullfile(folderName, ['*' searchString '*']));
@@ -64,8 +65,8 @@ for i = 1:length(files)
     % Optionally, you can further process the loaded variables here
 end
 %%% END IMPORT DATA FILES %%%
-
-geometries = mc_10000; %change name each run
+geometries = pd_3_geos; %change name each run
+%geometries = mc_10000; %change name each run
 if ndims(geometries) == 2
     n_geometries = 1;
     geometries_size = size(geometries)
@@ -75,7 +76,8 @@ elseif ndims(geometries) == 3
     geometries_size = geometries_size(2:end);
 end
 
-materials = mc_10000_inputs'; %change name each run
+materials = pd_3_inputs'; %change name each run
+%materials = mc_10000_inputs'; %change name each run
 materials_size = size(materials)
 n_materials = materials_size(1);
 
