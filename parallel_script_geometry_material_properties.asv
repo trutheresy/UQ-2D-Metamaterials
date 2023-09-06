@@ -1,6 +1,7 @@
 % clc
 % clear all
-parpool('local',40); % Starts a parallel pool with 4 workers
+delete(gcp('nocreate'))
+parpool('local',6); % Starts a parallel pool
 
 % Get the full path to the currently executing script
 scriptPath = mfilename('fullpath');
@@ -45,10 +46,10 @@ n_materials = 1;
 
 %%% IMPORT DATA FILES %%%
 % Specify the folder name and search string
-folderName = 'gaussian 6+1 inputs quadrature rule 2nd geo study';
+folderName = 'gaussian 6+1 inputs quadrature rule study';
 %folderName = 'gaussian 6+1 inputs mc study';
 searchString = '_pd_2';
-%searchString = '_mc_10000.mat';
+%searchString = '_mc_100.mat';
 
 % Get a list of all files in the specified folder
 files = dir(fullfile(folderName, ['*' searchString '*']));
@@ -67,7 +68,7 @@ for i = 1:length(files)
 end
 %%% END IMPORT DATA FILES %%%
 geometries = pd_2_geos; %change name each run
-%geometries = mc_10000; %change name each run
+%geometries = mc_100_geo; %change name each run
 if ndims(geometries) == 2
     n_geometries = 1;
     geometries_size = size(geometries)
@@ -78,7 +79,7 @@ elseif ndims(geometries) == 3
 end
 
 materials = pd_2_inputs'; %change name each run
-%materials = mc_10000_inputs'; %change name each run
+%materials = mc_100_inputs'; %change name each run
 materials_size = size(materials)
 n_materials = materials_size(1);
 
