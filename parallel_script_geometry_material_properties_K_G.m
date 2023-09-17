@@ -143,8 +143,8 @@ if mat_geo_coupled
         save(['rho_hard_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(rho_hard))], 'rho_hard');
         save(['K_soft_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_soft))], 'K_soft');
         save(['K_hard_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_hard))], 'K_hard');
-        save(['K_soft_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_soft))], 'K_soft');
-        save(['K_hard_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_hard))], 'K_hard');
+        save(['G_soft_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_soft))], 'G_soft');
+        save(['G_hard_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_hard))], 'G_hard');
         save(['E_soft_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(E_soft))], 'E_soft');
         save(['E_hard_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(E_hard))], 'E_hard');
         save(['pr_soft_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(pr_soft))], 'pr_soft');
@@ -206,8 +206,8 @@ if ~mat_geo_coupled
         save(['rho_hard_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(rho_hard))], 'rho_hard');
         save(['K_soft_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_soft))], 'K_soft');
         save(['K_hard_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_hard))], 'K_hard');
-        save(['K_soft_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_soft))], 'K_soft');
-        save(['K_hard_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_hard))], 'K_hard');
+        save(['G_soft_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_soft))], 'G_soft');
+        save(['G_hard_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(K_hard))], 'G_hard');
         save(['E_soft_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(E_soft))], 'E_soft');
         save(['E_hard_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(E_hard))], 'E_hard');
         save(['pr_soft_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(pr_soft))], 'pr_soft');
