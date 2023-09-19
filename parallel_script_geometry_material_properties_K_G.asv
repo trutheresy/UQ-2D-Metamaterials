@@ -46,7 +46,7 @@ n_materials = 1;
 
 %%% IMPORT DATA FILES %%%
 % Specify the folder name and search string
-folderName = 'gamma beta 6+1 inputs quadrature rule sparse study';
+folderName = 'gamma beta 6+1 inputs quadrature rule sparse study 2';
 %folderName = 'gamma beta 6+1 inputs mc study';
 searchString = '_pd_3';
 %searchString = '_mc_300.mat';
