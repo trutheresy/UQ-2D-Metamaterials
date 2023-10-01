@@ -17,36 +17,12 @@ save_outputs = true;
 % custom_PR = false;
 error_geometries = true;
 mat_geo_coupled = true;
-
-%%% DEFAULT PARAMETERS %%%
 n_geometries = 1;
 n_materials = 1;
-% E_soft = 200e6*ones(1,n_materials);
-% E_hard = 200e9*ones(1,n_materials);
-% rho_soft = 1e3*ones(1,n_materials);
-% rho_hard = 8e3*ones(1,n_materials);
-% poisson_soft = 0*ones(1,n_materials);
-% poisson_hard = 0.5*ones(1,n_materials);
-
-%%% ALTERED PARAMETERS %%%
-% importdata("scaled_default_geometry.mat")
-% input_geometries = scaled_matrix_2;
-
-%input_geometries = importdata('scaled_matrices.mat');
-%input_data = pd_5_inputs;
-%input_data_size = size(input_data);
-%n_materials = input_data_size(2);
-%n_geometries = length(input_geometries);
-%E_soft = input_data(1,:);
-%E_hard = input_data(1,:);
-%rho_soft = input_data(1,:); %change back to correct rows later
-%rho_hard = input_data(1,:);
-%poisson_soft = input_data(1,:);
-%poisson_hard = input_data(1,:);
 
 %%% IMPORT DATA FILES %%%
 % Specify the folder name and search string
-folderName = 'gamma beta 6+1 inputs quadrature rule sparse study 2';
+folderName = 'gamma beta 6+1 inputs sparse grid leja study';
 %folderName = 'gamma beta 6+1 inputs mc study';
 searchString = '_pd_3';
 %searchString = '_mc_300.mat';
