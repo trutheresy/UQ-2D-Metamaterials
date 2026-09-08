@@ -44,8 +44,8 @@ input_geometries = importdata('trial_geometry_40.mat');
 
 %%% IMPORT DATA FILES %%%
 % % Specify the folder name and search string
-% folderName = 'gaussian 6+1 inputs quadrature rule study';
-% %folderName = 'gaussian 6+1 inputs mc study';
+% folderName = 'DATASETS/gaussian 6+1 inputs quadrature rule study';
+% %folderName = 'DATASETS/gaussian 6+1 inputs mc study';
 % searchString = '_pd_3';
 % %searchString = '_mc_10000.mat';
 % 

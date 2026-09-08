@@ -25,7 +25,7 @@ poisson_soft = 0*ones(1,n_materials);
 poisson_hard = 0.5*ones(1,n_materials);
 
 %%% ALTERED PARAMETERS %%%
-% input_data = mc_10000_inputs;
+% input_data = DATASETS/mc_10000_inputs;
 % input_data_size = size(input_data);
 % n_materials = input_data_size(2)
 % E_soft = input_data(1,:);

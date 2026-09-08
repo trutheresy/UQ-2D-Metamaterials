@@ -46,8 +46,8 @@ n_materials = 1;
 
 %%% IMPORT DATA FILES %%%
 % Specify the folder name and search string
-folderName = 'gaussian 6+1 inputs sparse grid 2nd geo study';
-%folderName = 'gaussian 6+1 inputs mc study';
+folderName = 'DATASETS/gaussian 6+1 inputs sparse grid 2nd geo study';
+%folderName = 'DATASETS/gaussian 6+1 inputs mc study';
 searchString = '_pd_1';
 %searchString = '_mc_100.mat';
 
@@ -68,7 +68,7 @@ for i = 1:length(files)
 end
 %%% END IMPORT DATA FILES %%%
 geometries = pd_1_geos; %change name each run
-%geometries = mc_100_geo; %change name each run
+%geometries = DATASETS/mc_100_geo; %change name each run
 if ndims(geometries) == 2
     n_geometries = 1;
     geometries_size = size(geometries)
@@ -79,7 +79,7 @@ elseif ndims(geometries) == 3
 end
 
 materials = pd_1_inputs'; %change name each run
-%materials = mc_100_inputs'; %change name each run
+%materials = DATASETS/mc_100_inputs'; %change name each run
 materials_size = size(materials)
 n_materials = materials_size(1);
 
@@ -130,7 +130,7 @@ if mat_geo_coupled
 
     %%% SAVE FILES - CHECK NAMES PRIOR TO RUN %%%
     if save_outputs
-        cd(outputFolder);
+        cd(folderName);
         save(['bg_size_gaussian_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(bg_size))], 'bg_size');
         save(['bg_bottom_gaussian_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(bg_bottom))], 'bg_bottom');
         save(['bg_top_gaussian_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(bg_top))], 'bg_top');
@@ -184,7 +184,7 @@ if ~mat_geo_coupled
 
     %%% SAVE FILES - CHECK NAMES PRIOR TO RUN %%%
     if save_outputs
-        cd(outputFolder);
+        cd(folderName);
         save(['bg_size_gaussian_' num2str(materials_size(2)) '_fp_5%_n' num2str(length(n_geometries*bg_size))], 'bg_size');
         save(['bg_bottom_gaussian_' num2str(materials_size(2)) '_fp_5%_n' num2str(length(n_geometries*bg_bottom))], 'bg_bottom');
         save(['bg_top_gaussian_' num2str(materials_size(2)) '_fp_5%_n' num2str(length(bg_top))], 'bg_top');

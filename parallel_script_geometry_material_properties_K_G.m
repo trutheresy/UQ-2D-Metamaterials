@@ -22,8 +22,8 @@ n_materials = 1;
 
 %%% IMPORT DATA FILES %%%
 % Specify the folder name and search string
-folderName = 'gamma beta 6+1 inputs sparse grid leja study';
-%folderName = 'gamma beta 6+1 inputs mc study';
+folderName = 'DATASETS/gamma beta 6+1 inputs sparse grid leja study';
+%folderName = 'DATASETS/gamma beta 6+1 inputs mc study';
 searchString = '_pd_3';
 %searchString = '_mc_300.mat';
 
@@ -111,7 +111,7 @@ if mat_geo_coupled
 
     %%% SAVE FILES - CHECK NAMES PRIOR TO RUN %%%
     if save_outputs
-        cd(outputFolder);
+        cd(folderName);
         save(['bg_size_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(bg_size))], 'bg_size');
         save(['bg_bottom_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(bg_bottom))], 'bg_bottom');
         save(['bg_top_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(bg_top))], 'bg_top');
@@ -174,7 +174,7 @@ if ~mat_geo_coupled
 
     %%% SAVE FILES - CHECK NAMES PRIOR TO RUN %%%
     if save_outputs
-        cd(outputFolder);
+        cd(folderName);
         save(['bg_size_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(bg_size))], 'bg_size');
         save(['bg_bottom_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(bg_bottom))], 'bg_bottom');
         save(['bg_top_gamma_' num2str(materials_size(2)) 'd_fp_5%_n' num2str(length(bg_top))], 'bg_top');
